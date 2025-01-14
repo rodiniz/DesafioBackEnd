@@ -1,31 +1,26 @@
 ﻿services:
-  postgres:
-    image: postgres:15
-    container_name: kanban-postgres
-    restart: unless-stopped
-    environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: kanban
-      POSTGRES_DB: kanban
-    ports:
-      - "5432:5432"
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
-
-  kanban-api:
+  web:
     build:
       context: .
       dockerfile: Dockerfile
-    image: kanban-api
-    container_name: kanban-api
-    restart: unless-stopped
-    environment:
-      ASPNETCORE_ENVIRONMENT: Development
-      ConnectionStrings__Default: "Host=postgres;Database=kanban;Username=kanban;Password=kanban"
     ports:
-      - "5000:8080"
+      - "5003:8080"  # Map host port 5003 to container port 8080
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__DefaultConnection=Host=db;Port=5433;Database=kanban;Username=kanban;Password=kanban123
     depends_on:
-      - postgres
+      - db
+
+  db:
+    image: postgres:15
+    ports:
+      - "5433:5432"  # Map host port 5433 to container port 5432
+    environment:
+      POSTGRES_DB: kanban
+      POSTGRES_USER: kanban
+      POSTGRES_PASSWORD: kanban123
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
 
 volumes:
   postgres_data:

@@ -1,6 +1,6 @@
 ﻿namespace KanBanApplication.Dtos;
 
-public class KanbanCardDto: KanbanCardInsertDto
+public class KanbanCardDto: KanbanCardModelDto
 {
     public required Guid Id { get; set; }
 }

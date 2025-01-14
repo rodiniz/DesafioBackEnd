@@ -8,7 +8,7 @@ using OneOf.Types;
 
 namespace KanBanApplication.Services;
 
-public class KanbanCrudService:ICrudService<KanbanCardDto, Guid>
+public class KanbanCrudService:ICrudService<KanbanCardModelDto, KanbanCardDto, Guid>
 {
     private readonly KanbanContext _context;
 
@@ -17,15 +17,18 @@ public class KanbanCrudService:ICrudService<KanbanCardDto, Guid>
         _context = context;
     }
 
-    public async Task<KanbanCardDto> Create(KanbanCardDto model)
+    public async Task<KanbanCardDto> Create(KanbanCardModelDto model)
     {
         var entity = KanbanMapper.DtoToEntity(model);
+        entity.Id = Guid.NewGuid();
         _context.Set<KanbanCard>().Add(entity);
         await _context.SaveChangesAsync();
         return KanbanMapper.EntityToDto(entity);
     }
 
-    public async Task<OneOf<NotFound,KanbanCardDto>> Update(Guid id, KanbanCardDto model)
+   
+
+    public async Task<OneOf<NotFound,KanbanCardModelDto>> Update(Guid id, KanbanCardModelDto model)
     {
        var dbCard = await _context.Set<KanbanCard>().FindAsync(id);
        if (dbCard == null)
@@ -55,5 +58,15 @@ public class KanbanCrudService:ICrudService<KanbanCardDto, Guid>
     public async Task<List<KanbanCardDto>> GetAll()
     {
         return await _context.Set<KanbanCard>().EntityToDto().ToListAsync();
+    }
+
+    public async Task<KanbanCardDto?> Get(Guid id)
+    {
+        var entity = await _context.Set<KanbanCard>().FindAsync(id);
+        if (entity == null)
+        {
+            return null;
+        }
+        return KanbanMapper.EntityToDto(entity);
     }
 }
