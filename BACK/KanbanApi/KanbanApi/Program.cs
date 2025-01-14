@@ -1,7 +1,10 @@
 using System.Text;
 using KanbanApi.Routes;
+using KanBanApplication.Domain.Interfaces;
+using KanBanApplication.Dtos;
 using KanBanApplication.InfraStructure;
 using KanBanApplication.InfraStructure.Persistence;
+using KanBanApplication.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 
@@ -14,6 +17,8 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddCors();
 
 builder.Services.AddPersistence(builder.Configuration);
+
+builder.Services.AddScoped<ICrudService<KanbanCardDto, Guid>, KanbanCrudService>();
 
 builder.Services.AddAuthentication(options =>
     {

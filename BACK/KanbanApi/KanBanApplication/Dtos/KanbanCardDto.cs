@@ -1,12 +1,6 @@
 ﻿namespace KanBanApplication.Dtos;
 
-public class KanbanCardDto
+public class KanbanCardDto: KanbanCardInsertDto
 {
-    public Guid Id { get; set; }
-    
-    public required string Titulo { get; set; }
-    
-    public required string Conteudo { get; set; }
-
-    public required string Lista { get; set; }
+    public required Guid Id { get; set; }
 }

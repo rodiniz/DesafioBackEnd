@@ -11,9 +11,9 @@ public static class KanbanRoutes
         var group = app.MapGroup("/cards").RequireAuthorization();
         group.MapPost("/", async (
                 [FromServices] ICrudService<KanbanCardDto,Guid> service,
-                [FromBody] KanbanCardDto courseDto) =>
+                [FromBody] KanbanCardInsertDto courseDto) =>
             {
-                var createResult= await service.Create(courseDto);
+                var createResult= await service.Create((KanbanCardDto) courseDto);
                 return  Results.Created("",createResult);
             })
             .WithOpenApi();
