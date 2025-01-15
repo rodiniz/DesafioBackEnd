@@ -6,9 +6,9 @@ namespace KanbanApi;
 
 public class LogEndpointFilter: IEndpointFilter
 {
-    private readonly ICrudService<KanbanCardModelDto, KanbanCardDto, Guid> _service;
+    private readonly IKanbanCrudService _service;
 
-    public LogEndpointFilter(ICrudService<KanbanCardModelDto, KanbanCardDto, Guid> service)
+    public LogEndpointFilter(IKanbanCrudService service)
     {
         _service = service;
     }

@@ -14,7 +14,7 @@ public static class AuthRoutes
             {
                 var result =  authService.Login(loginRequestDto.Login,loginRequestDto.Senha);
                 
-                return !string.IsNullOrEmpty(result)?  Results.Text(result): Results.BadRequest();
+                return !string.IsNullOrEmpty(result)?  Results.Json(result): Results.BadRequest();
             })
             .WithOpenApi();
     }

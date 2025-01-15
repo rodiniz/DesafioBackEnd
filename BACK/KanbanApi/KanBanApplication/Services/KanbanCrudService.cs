@@ -8,7 +8,7 @@ using OneOf.Types;
 
 namespace KanBanApplication.Services;
 
-public class KanbanCrudService:ICrudService<KanbanCardModelDto, KanbanCardDto, Guid>
+public class KanbanCrudService:IKanbanCrudService
 {
     private readonly KanbanContext _context;
 
@@ -43,7 +43,7 @@ public class KanbanCrudService:ICrudService<KanbanCardModelDto, KanbanCardDto, G
        return  KanbanMapper.EntityToDto(dbCard);
     }
 
-    public async Task<OneOf<NotFound,Success>> Delete(Guid idEntity)
+    public async Task<OneOf<NotFound,List<KanbanCardDto>>> Delete(Guid idEntity)
     {
         var entity = await _context.Set<KanbanCard>().FindAsync(idEntity);
         if (entity == null)
@@ -52,7 +52,7 @@ public class KanbanCrudService:ICrudService<KanbanCardModelDto, KanbanCardDto, G
         }
         _context.Set<KanbanCard>().Remove(entity);
         await _context.SaveChangesAsync();
-        return new Success();
+        return await GetAll();
     }
 
     public async Task<List<KanbanCardDto>> GetAll()
@@ -63,10 +63,6 @@ public class KanbanCrudService:ICrudService<KanbanCardModelDto, KanbanCardDto, G
     public async Task<KanbanCardDto?> Get(Guid id)
     {
         var entity = await _context.Set<KanbanCard>().FindAsync(id);
-        if (entity == null)
-        {
-            return null;
-        }
-        return KanbanMapper.EntityToDto(entity);
+        return entity == null ? null : KanbanMapper.EntityToDto(entity);
     }
 }

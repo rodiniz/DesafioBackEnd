@@ -4,23 +4,25 @@
       context: .
       dockerfile: Dockerfile
     ports:
-      - "5003:8080"  # Map host port 5003 to container port 8080
+      - "5000:8080"  # Map host port 5003 to container port 8080
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - ConnectionStrings__DefaultConnection=Host=db;Port=5433;Database=kanban;Username=kanban;Password=kanban123
+      - ConnectionStrings__Default=Server=db;Port=3306;Database=kanban;User=kanban;Password=kanban;
     depends_on:
       - db
 
-  db:
-    image: postgres:15
-    ports:
-      - "5433:5432"  # Map host port 5433 to container port 5432
-    environment:
-      POSTGRES_DB: kanban
-      POSTGRES_USER: kanban
-      POSTGRES_PASSWORD: kanban123
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
 
+  db:
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: kanban_root # Replace with your root password
+      MYSQL_DATABASE: kanban     # Replace with your database name
+      MYSQL_USER: kanban             # Replace with your MySQL username
+      MYSQL_PASSWORD: kanban     # Replace with your MySQL user password
+    ports:
+      - "3306:3306"                          # Expose port 3306 for MySQL
+    volumes:
+      - mysql_data:/var/lib/mysql            # Corrected path to store MySQL data
+  
 volumes:
-  postgres_data:
+    mysql_data:

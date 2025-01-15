@@ -1,5 +1,4 @@
 using AutoFixture;
-using KanBanApplication.Domain.Entities;
 using KanBanApplication.Dtos;
 using KanBanApplication.InfraStructure.Persistence;
 using KanBanApplication.Services;

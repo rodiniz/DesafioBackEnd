@@ -50,11 +50,11 @@ builder.Services.AddCors();
 
 var connectionString = builder.Configuration.GetConnectionString("Default");
 builder.Services.AddDbContext<KanbanContext>(options =>
-    options.UseNpgsql(connectionString));
+    options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
 
 
 
-builder.Services.AddScoped<ICrudService<KanbanCardModelDto,KanbanCardDto, Guid>, KanbanCrudService>();
+builder.Services.AddScoped<IKanbanCrudService, KanbanCrudService>();
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.Configure<LoginSettings>(builder.Configuration.GetSection("LoginSettings"));
 builder.Services.Configure<JwtSettings>(builder.Configuration.GetSection("JwtSettings"));

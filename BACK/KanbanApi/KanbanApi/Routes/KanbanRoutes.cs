@@ -13,7 +13,7 @@ public static class KanbanRoutes
             .AddEndpointFilter<LogEndpointFilter>();
         
         group.MapPost("/", async (
-                [FromServices] ICrudService<KanbanCardModelDto, KanbanCardDto, Guid> service,
+                [FromServices] IKanbanCrudService service,
                 [FromBody] KanbanCardModelDto kanbanCardModelDto,
                 IValidator<KanbanCardModelDto> validator) =>
             {
@@ -29,10 +29,10 @@ public static class KanbanRoutes
             .WithOpenApi();
 
         group.MapGet("/",
-            ([FromServices] ICrudService<KanbanCardModelDto, KanbanCardDto, Guid> courseService) =>
-                courseService.GetAll());
+            ([FromServices] IKanbanCrudService kanbanCrudService) =>
+                kanbanCrudService.GetAll());
         group.MapPut("/{id}", async (
-            [FromServices] ICrudService<KanbanCardModelDto, KanbanCardDto, Guid> courseService, 
+            [FromServices] IKanbanCrudService courseService, 
             Guid id,
             [FromBody] KanbanCardModelDto kanbanCardModelDto,
             IValidator<KanbanCardModelDto> validator) =>
@@ -50,13 +50,13 @@ public static class KanbanRoutes
             );
         });
         group.MapDelete("/{id}",
-            async ([FromServices] ICrudService<KanbanCardModelDto, KanbanCardDto, Guid> courseService,
+            async ([FromServices] IKanbanCrudService kanbanCrudService,
                 Guid id) =>
             {
-                var deleteResult = await courseService.Delete(id);
+                var deleteResult = await kanbanCrudService.Delete(id);
                 return deleteResult.Match(
                     notfound => Results.NotFound(),
-                    Results.Ok
+                    success=>Results.Json(success )
                 );
             });
     }
