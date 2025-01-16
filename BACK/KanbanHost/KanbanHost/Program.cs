@@ -17,7 +17,7 @@ var api=builder.AddProject<Projects.KanbanApi>("api")
 builder.AddYarnApp("yarn-demo", "../../../FRONT")
     .WithReference(api)
     .WithEnvironment("NODE_OPTIONS", "--openssl-legacy-provider")
-    .WithEnvironment("REACT_APP_API_URL",api.Resource.GetEndpoint("http"))
+    .WithEnvironment("REACT_APP_API_URL",api.Resource.GetEndpoint("https"))
     .WithYarnPackageInstallation()
     .WithExternalHttpEndpoints();
 

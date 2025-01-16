@@ -11,3 +11,4 @@ BACK/Kanban.ServiceDefaults/bin
 BACK/Kanban.ServiceDefaults/obj
 BACK/KanbanHost/KanbanHost/bin
 BACK/KanbanHost/KanbanHost/obj
+*.user
