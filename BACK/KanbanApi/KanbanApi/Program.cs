@@ -2,16 +2,16 @@ using System.Text;
 using KanbanApi.Routes;
 using KanBanApplication;
 using KanBanApplication.Domain.Interfaces;
-using KanBanApplication.Dtos;
 using KanBanApplication.InfraStructure;
 using KanBanApplication.InfraStructure.Persistence;
 using KanBanApplication.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.AddServiceDefaults();
 builder.Services.AddAuthorization();
 // Add services to the container.
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -48,10 +48,7 @@ builder.Services.AddSwaggerGen(c =>
   );
 builder.Services.AddCors();
 
-var connectionString = builder.Configuration.GetConnectionString("Default");
-builder.Services.AddDbContext<KanbanContext>(options =>
-    options.UseSqlite(connectionString));
-
+builder.AddSqlServerDbContext<KanbanContext>(connectionName: "database");
 
 
 builder.Services.AddScoped<IKanbanCrudService, KanbanCrudService>();

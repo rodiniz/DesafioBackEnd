@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KanbanHost", "KanbanHost\KanbanHost.csproj", "{3EBFA63E-1CD2-47D4-B1A7-9E6D5A2CA46F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KanbanApi", "..\KanbanApi\KanbanApi\KanbanApi.csproj", "{6C7D7237-6B91-4371-BC6D-6AB1F5F50D89}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kanban.ServiceDefaults", "..\Kanban.ServiceDefaults\Kanban.ServiceDefaults.csproj", "{2D6F0574-92F4-4A31-8694-C173153FD422}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3EBFA63E-1CD2-47D4-B1A7-9E6D5A2CA46F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3EBFA63E-1CD2-47D4-B1A7-9E6D5A2CA46F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3EBFA63E-1CD2-47D4-B1A7-9E6D5A2CA46F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3EBFA63E-1CD2-47D4-B1A7-9E6D5A2CA46F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6C7D7237-6B91-4371-BC6D-6AB1F5F50D89}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C7D7237-6B91-4371-BC6D-6AB1F5F50D89}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C7D7237-6B91-4371-BC6D-6AB1F5F50D89}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C7D7237-6B91-4371-BC6D-6AB1F5F50D89}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2D6F0574-92F4-4A31-8694-C173153FD422}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2D6F0574-92F4-4A31-8694-C173153FD422}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2D6F0574-92F4-4A31-8694-C173153FD422}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2D6F0574-92F4-4A31-8694-C173153FD422}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

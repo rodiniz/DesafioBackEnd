@@ -7,3 +7,7 @@ BACK/KanbanApi/KanbanApplicationTest/obj
 BACK/KanbanApi/.idea
 BACK/KanbanApi/KanbanApi.sln.DotSettings.user
 .idea
+BACK/Kanban.ServiceDefaults/bin
+BACK/Kanban.ServiceDefaults/obj
+BACK/KanbanHost/KanbanHost/bin
+BACK/KanbanHost/KanbanHost/obj
