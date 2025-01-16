@@ -2,19 +2,9 @@
 
 O propósito desse desafio é a criação de uma API que fará a persistência de dados de um quadro de kanban. Esse quadro possui listas, que contém cards.
 
-## Rodando o Frontend
 
-Um frontend de exemplo foi disponibilizado na pasta FRONT.
 
-Para rodá-lo, faça:
-
-```console
-> cd FRONT
-> yarn
-> yarn start
-```
-
-## Rodando o Backend
+## Rodando o Backend e o FrontEnd no .net aspire
 
  Após clonar o projeto navegue até  diretório back/KanbanHost/KanbanHost
 Execute os comandos abaixo:
