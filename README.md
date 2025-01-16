@@ -16,7 +16,7 @@ Para rodá-lo, faça:
 
 ## Rodando o Backend
 
- Após clonar o projeto navegue até  diretório back/KanbanApi/KanbanApi
+ Após clonar o projeto navegue até  diretório back/KanbanHost/KanbanHost
 Execute os comandos abaixo:
 ```bash
 dotnet user-secrets set "LoginSettings:Username" "letscode"
@@ -26,11 +26,5 @@ dotnet user-secrets set "JwtSettings:JWTSecret" "mjdowej2318nTBVBD423Nheu3wg4RVD
 ```bash
 dotnet run
 ```
-Não tive tempo de configurar docker e docker compose.
 O Front end não lida bem com erros e mostra uma página em branco quando tento criar um card sem as informações obrigatórias
-O projeto possui dois branches
-Para executar o projeto com .net aspire selecione o branch features/netapire e vá até o diretório \BACK\KanbanHost\KanbanHost 
-crie os user secrets usando as instruções acima e execute
-```bash
-dotnet un
-```
+
