@@ -8,14 +8,15 @@
         <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     </PropertyGroup>
 
-    <ItemGroup>
+    <ItemGroup>       
+        <PackageReference Include="Aspire.Microsoft.EntityFrameworkCore.SqlServer" Version="8.2.2" />
         <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.11" />
-        <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.6"/>    
-        <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="8.0.12" />     
+        <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.6"/>            
         <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0"/>
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\..\Kanban.ServiceDefaults\Kanban.ServiceDefaults.csproj" />
       <ProjectReference Include="..\KanBanApplication\KanBanApplication.csproj" />
     </ItemGroup>
 

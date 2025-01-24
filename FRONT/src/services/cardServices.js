@@ -1,5 +1,6 @@
-const AUTH_URL = 'http://localhost:5000/login';
-const CARD_URL = 'http://localhost:5000/cards';
+const apiUrl = process.env.REACT_APP_API_URL;
+const AUTH_URL = `${apiUrl}/login`;
+const CARD_URL = `${apiUrl}/cards`;
 
 const CREDENTIAL = { login: 'letscode', senha: 'lets@123' };
 
